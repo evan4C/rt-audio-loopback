@@ -1,0 +1,17 @@
+[project]
+name = "rt-audio-loopback"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "evan4C", email = "lifan1994@outlook.com" }
+]
+requires-python = ">=3.14"
+dependencies = []
+
+[project.scripts]
+rt-audio-loopback = "rt_audio_loopback:main"
+
+[build-system]
+requires = ["uv_build>=0.13.8,<0.14.0"]
+build-backend = "uv_build"
