@@ -108,6 +108,7 @@ async def main():
             try:
                 await asyncio.gather(*tasks)
             finally:
+                await ws.close()
                 for task in tasks:
                     task.cancel()
 
