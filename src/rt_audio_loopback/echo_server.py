@@ -1,7 +1,7 @@
 
 import asyncio
 from websockets.asyncio.server import ServerConnection, serve
-
+from websockets.exceptions import ConnectionClosed, ConnectionClosedError
 
 async def echo(ws: ServerConnection):
     print("Client connected")
@@ -10,6 +10,9 @@ async def echo(ws: ServerConnection):
         async for message in ws:
             print(f"Received: {message!r}")
             await ws.send(message)
+    except ConnectionClosed as exc:
+        if isinstance(exc, ConnectionClosedError):
+            print(f"unexpected quit: {exc}")
     finally:
         print("Client disconnected")
 
@@ -21,4 +24,7 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\n echo server stooped")
