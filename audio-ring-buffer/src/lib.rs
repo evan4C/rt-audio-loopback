@@ -1,5 +1,8 @@
 #![forbid(unsafe_code)]
 
+pub mod packet;
+pub mod metrics;
+
 use std::sync::{
     atomic::{AtomicU32, AtomicUsize, Ordering},
     Arc,
