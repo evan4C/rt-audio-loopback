@@ -25,6 +25,7 @@ impl LatencyClock {
     }
 
     /// RTT for a packet echoed with its timestamp unchanged.
+    /// RTT(round-trip time): Calculate the total time elapsed for a audio packet from client to server and back
     pub fn rtt(&self, sent_ns: u64) -> Option<Duration> {
         let now_ns = self.timestamp_ns();
 
